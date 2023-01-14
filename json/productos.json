@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "nombre": "Poster Fords ",
+        "descripcion": "80cm x 100 cm",
+        "precio": 1500,
+        "foto": "../img/poster1.jpg"
+    },
+    {
+        "id": "2",
+        "nombre": "Poster VW",
+        "descripcion": "80cm x 100cm",
+        "precio": 1550,
+        "foto": "../img/poster2.jpg"
+    },
+    {
+        "id": "3",
+        "nombre": "Poster Toyota",
+        "descripcion": "80cm x 100cm",
+        "precio": 1480,
+        "foto": "../img/poster3.jpg"
+    },
+    {
+        "id": "4",
+        "nombre": "Poster Vintage",
+        "descripcion": "80cm x 100cm",
+        "precio": 1465,
+        "foto": "../img/poster4.jpg"
+    },
+    {
+        "id": "5",
+        "nombre": "Poster Mustang",
+        "descripcion": "80cm x 100cm",
+        "precio": 1470,
+        "foto": "../img/poster5.jpg"
+    },
+    {
+        "id": "6",
+        "nombre": "Poster Ferrari",
+        "descripcion": "80cm x 100cm",
+        "precio": 2000,
+        "foto": "../img/poster6.jpg"
+    }
+]

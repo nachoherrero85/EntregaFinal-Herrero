@@ -46,34 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const guardado = window.localStorage;
 
 
-    // function productos1() {
-    //     posterAutos.forEach((info) => {
-    //         const nodo = document.createElement('div');
-    //         nodo.classList.add('card', 'col-sm-4');
-    //         const cuerpoAuto = document.createElement('div');
-    //         cuerpoAuto.classList.add('card-body');
-    //         const tituloAuto = document.createElement('h5');
-    //         tituloAuto.classList.add('card-title');
-    //         tituloAuto.textContent = info.nombre;
-    //         const imagenesAutos = document.createElement('img');
-    //         imagenesAutos.classList.add('img-fluid');
-    //         imagenesAutos.setAttribute('src', info.imagen);
-    //         const precioPosters = document.createElement('p');
-    //         precioPosters.classList.add('card-text');
-    //         precioPosters.textContent = `${moneda}${info.precio}`;
-    //         const boton1 = document.createElement('button');
-    //         boton1.classList.add('btn', 'btn-primary');
-    //         boton1.textContent = 'Agregar';
-    //         boton1.setAttribute('marcador', info.id);
-    //         boton1.addEventListener('click', anyadirProductoAlCarrito);
-    //         cuerpoAuto.appendChild(imagenesAutos);
-    //         cuerpoAuto.appendChild(tituloAuto);
-    //         cuerpoAuto.appendChild(precioPosters);
-    //         cuerpoAuto.appendChild(boton1);
-    //         nodo.appendChild(cuerpoAuto);
-    //         items.appendChild(nodo);
-    //     });
-    // }
 
 
     function anyadirProductoAlCarrito(evento) {

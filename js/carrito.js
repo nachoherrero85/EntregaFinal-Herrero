@@ -92,9 +92,9 @@ function agregarAlCarrito(productoAgregado) {
     carrito.push(productoEnCarrito);
     Swal.fire({
       icon: 'success',
-      title: 'Nuevo producto agregado al carrito',
+      title: 'Item agregado con éxito',
       text: productoAgregado.nombre,
-      confirmButtonColor: "#444444"
+      confirmButtonColor: "#ff0000"
     });
     $("#tablabody").append(`<tr id='fila${productoEnCarrito.id}' class='tabla-carrito'>
                             <td> ${productoEnCarrito.nombre}</td>

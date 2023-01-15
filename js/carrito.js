@@ -6,7 +6,7 @@ let cantidadTotalCompra = carrito.length;
 //dentro del document ready agrego todo el codigo generado por dom
 $(document).ready(function () {
   $("#cantidad-compra").text(cantidadTotalCompra);
-    //configuracion del selector para ordenar productos
+  //configuracion del selector para ordenar productos
   $("#seleccion option[value='pordefecto']").attr("selected", true);
   $("#seleccion").on("change", ordenarProductos);
   //llamo a las funciones que necesitan renderizarse 
@@ -15,13 +15,13 @@ $(document).ready(function () {
   productCards();
   mostrarEnTabla();
   $("#btn-continuar").on('click', function (e) {
-    if (carrito.length == 0){
+    if (carrito.length == 0) {
       e.preventDefault();
       Swal.fire({
         icon: 'error',
         title: 'No hay ningun item en tu carrito',
         text: 'Agrega algun producto para continuar',
-        confirmButtonColor: "#444444"
+        confirmButtonColor: "#ff0000"
       })
     }
   });
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function productCards() {
   for (const producto of productosJSON) {
-      $("#section-productos").append(`<div class="card-product"> 
+    $("#section-productos").append(`<div class="card-product"> 
                             <div class="img-container">
                             <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
                             </div>
@@ -40,11 +40,11 @@ function productCards() {
                             <button class="botones" id="btn${producto.id}"> Agregar al carrito </button>
                             </div>
                             </div>`);
-      $(`#btn${producto.id}`).on('click', function () {
-        agregarAlCarrito(producto);
-      });
-    }
-  };
+    $(`#btn${producto.id}`).on('click', function () {
+      agregarAlCarrito(producto);
+    });
+  }
+};
 
 //funcion utilizando AJAX para obtener la informacion de los productos creados en el archivo json
 
@@ -60,27 +60,27 @@ function obtenerJSON() {
 // Funcion que ordena productos segun precio, orden alfabetico y por defecto 
 function ordenarProductos() {
   let seleccion = $("#seleccion").val();
-    if (seleccion == "defecto") {
+  if (seleccion == "defecto") {
     productosJSON.sort(function (a, b) {
-        return a.id - b.id
+      return a.id - b.id
     });
-    } else if (seleccion == "menor") {
+  } else if (seleccion == "menor") {
     productosJSON.sort(function (a, b) {
-        return a.precio - b.precio
+      return a.precio - b.precio
     });
-    } else if (seleccion == "mayor") {
+  } else if (seleccion == "mayor") {
     productosJSON.sort(function (a, b) {
-        return b.precio - a.precio
+      return b.precio - a.precio
     });
-    } else if (seleccion == "alfabetico") {
+  } else if (seleccion == "alfabetico") {
     productosJSON.sort(function (a, b) {
-        return a.nombre.localeCompare(b.nombre);
+      return a.nombre.localeCompare(b.nombre);
     });
-    }
-    // Se llama de nuevo la funcion luego de ordenar
-    $(".card-product").remove();
-    productCards();
   }
+  // Se llama de nuevo la funcion luego de ordenar
+  $(".card-product").remove();
+  productCards();
+}
 
 //clase para cargar productos en el carrito y modificar sus cantidades
 class ProductoCarrito {

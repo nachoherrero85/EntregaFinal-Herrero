@@ -1,14 +1,13 @@
 $(document).ready(function () {
-    //subtotal que viene del archivo carrito.js
     $("#subtotal").text(calcularTotalCarrito());
-    //evento para que se modifique el html al cambiar el select sin que haya un error primero
+    //evento 
     $("#metodo-envio").on("change", calcularEnvio);
     $("#metodo-pago").on("change", validarPago);
     //funcion para validar el form 
     validarDatos();
 });
 
-//funcion para validar todos los campos del formulario antes de su envio
+//funcion validar
 function validarDatos() {
     $("#form-carrito").submit(function (e) {
         if ($("#nombre").val() == "") {
@@ -61,10 +60,10 @@ function validarDatos() {
         } else if ($("#metodo-pago").val() == "defecto") {
             e.preventDefault();
             $("#error-pago").fadeIn();
-            //como es un select inclui un change que depende de otra funcion y modifica el html
+            //change que modifica html
             $("#metodo-pago").on("change", validarPago);
         } else if ($("#metodo-pago").val() == "debito" || $("#metodo-pago").val() == "credito") {
-            //si el medio de pago es tarjeta se suman dos validaciones mas
+            //validaciones para pago con tarjeta
             e.preventDefault();
             if (($("#num-tarjeta").val() == "") || ($("#num-tarjeta").val().length != 16)) {
                 e.preventDefault();
@@ -79,10 +78,10 @@ function validarDatos() {
                     $("#error-codseg").fadeOut();
                 });
             } else {
-                //este else es para cuando el usuario elige tarjeta
+                //usuario elige tarjeta
                 e.preventDefault();
 
-                //una vez que se validan los datos los guardo en un array
+                //array que guarda datops
                 let datosCompra = [];
                 datosCompra.push($("#nombre").val());
                 datosCompra.push($("#email").val());
@@ -96,16 +95,16 @@ function validarDatos() {
                 datosCompra.push($("#num-tarjeta").val());
                 datosCompra.push($("#cod-seguridad").val());
 
-                //convierto el array a formato JSON para poder subirlo a la API
+                //convierto en array
                 let datosCompraJSON = JSON.stringify(datosCompra);
                 enviarDatos(datosCompraJSON);
 
-                //muestro un alert para que el usuario vea que la compra fue exitosa
+                //cartel compra exitosa
                 Swal.fire({
                     icon: 'success',
-                    title: '¡Compra confirmada!',
-                    text: 'Vas a recibir un mail de confirmación con el detalle de la compra en tu casilla',
-                    confirmButtonColor: "#444444"
+                    title: '¡Su Compra está confirmada!',
+                    text: 'Recibiras un mail de confirmación en la cassilla indicada',
+                    confirmButtonColor: "#ff0000"
                 });
 
                 //vacio el carrito

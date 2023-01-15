@@ -1,15 +1,11 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-//variable productosJSON para poder trabajar con la funcion obtenerJSON
 let productosJSON = [];
-// variable de monto que mantiene los datos al refrescar la ventana
+
 let cantidadTotalCompra = carrito.length;
-//dentro del document ready agrego todo el codigo generado por dom
 $(document).ready(function () {
   $("#cantidad-compra").text(cantidadTotalCompra);
-  //configuracion del selector para ordenar productos
   $("#seleccion option[value='pordefecto']").attr("selected", true);
   $("#seleccion").on("change", ordenarProductos);
-  //llamo a las funciones que necesitan renderizarse 
   $("#gastoTotal").html(`Total: $ ${calcularTotalCarrito()}`);
   obtenerJSON();
   productCards();
@@ -46,7 +42,6 @@ function productCards() {
   }
 };
 
-//funcion utilizando AJAX para obtener la informacion de los productos creados en el archivo json
 
 function obtenerJSON() {
   $.getJSON("../json/productos.json", function (respuesta, estado) {
@@ -57,7 +52,6 @@ function obtenerJSON() {
   });
 }
 
-// Funcion que ordena productos segun precio, orden alfabetico y por defecto 
 function ordenarProductos() {
   let seleccion = $("#seleccion").val();
   if (seleccion == "defecto") {
@@ -77,12 +71,10 @@ function ordenarProductos() {
       return a.nombre.localeCompare(b.nombre);
     });
   }
-  // Se llama de nuevo la funcion luego de ordenar
   $(".card-product").remove();
   productCards();
 }
 
-//clase para cargar productos en el carrito y modificar sus cantidades
 class ProductoCarrito {
   constructor(prod) {
     this.id = prod.id;
@@ -93,7 +85,6 @@ class ProductoCarrito {
   }
 }
 
-//funcion para agregar productos al carrito, modificando el modal con el detalle del carrito
 function agregarAlCarrito(productoAgregado) {
   let encontrado = carrito.find(p => p.id == productoAgregado.id);
   if (encontrado == undefined) {
@@ -105,7 +96,6 @@ function agregarAlCarrito(productoAgregado) {
       text: productoAgregado.nombre,
       confirmButtonColor: "#444444"
     });
-    //se agrega una nueva fila a la tabla de carrito en caso de que el producto no se encontrara 
     $("#tablabody").append(`<tr id='fila${productoEnCarrito.id}' class='tabla-carrito'>
                             <td> ${productoEnCarrito.nombre}</td>
                             <td id='${productoEnCarrito.id}'> ${productoEnCarrito.cantidad}</td>
@@ -113,7 +103,6 @@ function agregarAlCarrito(productoAgregado) {
                             <td><button class='btn btn-light' id="btn-eliminar-${productoEnCarrito.id}">🗑️</button></td>
                             </tr>`);
   } else {
-    //se pide al carro la posicion del producto y despues incremento su cantidad
     let posicion = carrito.findIndex(p => p.id == productoAgregado.id);
     carrito[posicion].cantidad += 1;
     $(`#${productoAgregado.id}`).html(carrito[posicion].cantidad);
@@ -123,7 +112,6 @@ function agregarAlCarrito(productoAgregado) {
   mostrarEnTabla();
 }
 
-//funcion para rehacer la tabla del modal cada vez que se refresca la pagina y eliminar productos del carrito
 function mostrarEnTabla() {
   $("#tablabody").empty();
   for (const prod of carrito) {
@@ -145,7 +133,6 @@ function mostrarEnTabla() {
   }
 };
 
-//funcion para calcular el monto total del carrito y la cantidad
 function calcularTotalCarrito() {
   let total = 0;
   for (const producto of carrito) {
@@ -156,7 +143,6 @@ function calcularTotalCarrito() {
   return total;
 }
 
-//funcion que resetea todos los valores una vez finalizada la compra 
 function vaciarCarrito() {
   $("#gastoTotal").text("Total: $0");
   $("#cantidad-compra").text("0");

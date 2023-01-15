@@ -138,9 +138,9 @@ function validarDatos() {
             //muestro un alert para que el usuario vea que la compra fue exitosa
             Swal.fire({
                 icon: 'success',
-                title: '¡Compra confirmada!',
-                text: 'Vas a recibir un mail de confirmación con el detalle de la compra en tu casilla',
-                confirmButtonColor: "#444444"
+                title: '¡Su Compra está confirmada!',
+                text: 'Recibiras un mail de confirmación en la cassilla indicada',
+                confirmButtonColor: "#ff0000"
             });
 
             //vacio el carrito

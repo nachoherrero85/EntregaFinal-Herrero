@@ -170,8 +170,7 @@ h1 {
   margin: 20px;
   padding: 20px;
   border-radius: 20px 20px 20px 20px;
-  border: 2px;
-  border-color: #000000;
+
   text-align: center;
   background-color: rgb(255, 255, 255);
 }
@@ -192,6 +191,8 @@ h1 {
   width: 100%;
   height: 50%;
   margin: 10px;
+  box-shadow: 2px 2px 5px #999;
+
 }
 
 #container-general #section-productos .card-product .info-producto {

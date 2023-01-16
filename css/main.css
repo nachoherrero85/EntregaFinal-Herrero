@@ -177,6 +177,8 @@ h1 {
 #container-general #section-productos .card-product .img-container {
   overflow: hidden;
   position: relative;
+  box-shadow: 2px 2px 5px #999;
+
 }
 
 #container-general #section-productos .card-product .img-container:hover {

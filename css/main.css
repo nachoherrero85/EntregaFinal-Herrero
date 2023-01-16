@@ -13,10 +13,9 @@ body {
 }
 
 
-
-
-
-
+img {
+  border-radius: 15px;
+}
 
 .botones {
   font-size: 18px;
